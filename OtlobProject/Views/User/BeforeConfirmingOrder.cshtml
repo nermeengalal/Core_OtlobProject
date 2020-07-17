@@ -1,0 +1,47 @@
+﻿@model OtlobProject.Models.Address
+
+@{
+    //ViewData["Title"] = "BeforeConfirmingOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4 style="text-align:center;font-size:30px ;color: #3d9970;font-family: cursive;">Add your Address</h4>
+<hr />
+<div class="row register-box" style="margin-left:40%">
+    <div class="col-md-4">
+        <form asp-action="BeforeConfirmingOrder">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="AppartmentNO" class="control-label"></label>
+                <input asp-for="AppartmentNO" class="form-control" />
+                <span asp-validation-for="AppartmentNO" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FloorNO" class="control-label"></label>
+                <input asp-for="FloorNO" class="form-control" />
+                <span asp-validation-for="FloorNO" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BuildingNO" class="control-label"></label>
+                <input asp-for="BuildingNO" class="form-control" />
+                <span asp-validation-for="BuildingNO" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StreetName" class="control-label"></label>
+                <input asp-for="StreetName" class="form-control" />
+                <span asp-validation-for="StreetName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" style="text-align:center">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Back </a>
+</div>
+

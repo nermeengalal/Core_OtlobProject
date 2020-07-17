@@ -1,0 +1,15 @@
+﻿@model OtlobProject.Models.Area
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<div class="container-fluid justify-content-center align-content-center" style="margin-left:40%;margin-top:30%">
+    <form class="search-form d-none d-md-block" asp-action="SearchByRestaurantArea" asp-route-searchString="searchString">
+        <div style="text-align:center">
+            <i class="icon-magnifier"></i>
+            <input type="search" class="form-control" placeholder="Search Here" title="Search here" name="searchString" style="width:30%">
+        </div>
+
+    </form>
+</div>

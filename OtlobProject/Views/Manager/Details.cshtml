@@ -1,0 +1,56 @@
+﻿@model OtlobProject.Models.Restaurant
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="card" style="width:600px">
+        <img class="card-img-top " src="~/images/@Model.Logo" alt="Card image" style="width:100% ;height:300px">
+        <div class="card-body">
+            <h1 style="text-align:center;font-size:30px ;color: #3d9970;font-family: cursive;">@Model.Name</h1>
+            <table class="table table-striped">
+                <tr>
+                    <th>Mobile : </th>
+                    <td>@Model.Mobile</td>
+                   
+                </tr>
+                <tr>
+                    <th>HotLine :</th>
+                    <td>@Model.HotLine</td>
+                </tr>
+                <tr>
+                    <th>Max Estimated DeliveryTime :</th>
+                    <td>@Model.MaxEstimatedDeliveryTime</td>
+                    
+                </tr>
+                <tr>
+                    <th>Working From :</th>
+                    <td>@Model.WorkingFrom</td>
+                    
+                </tr>
+                <tr>
+                    <th>Working To : </th>
+                    <td>@Model.WorkingTo</td>
+                   
+                </tr>
+                <tr>
+                    <th>Delivery Fee : </th>
+                    <td>@Model.DeliveryFee</td>
+                   
+                </tr>
+                <tr>
+                    <th>Area : </th>
+                    <td>@ViewBag.area</td>
+                  
+                </tr>
+                
+
+            </table>
+            <div style="text-align:center">
+                <a href="/Manager/Index" class="btn btn-secondary btn-sm stretched-link" style="text-align:center">Back</a>
+            </div>
+        </div>
+    </div>
+
+

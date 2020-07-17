@@ -1,0 +1,53 @@
+﻿@model OtlobProject.Models.MealsInMenu
+
+@{
+    ViewData["Title"] = "UpdateMeal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br /><br /><br />
+<div class="row container" >
+    <div class="col-md-6">
+        <img src="~/images/@Model.Logo" style="width: 85%;height: 85%;"  />
+    </div>
+    <div class="col-md-6">
+        <form  enctype="multipart/form-data" asp-action="UpdateMeal">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Logo" class="control-label"></label>
+                <input asp-for="Logo" class="form-control" type="file" />
+                <span asp-validation-for="Logo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsMeal" /> @Html.DisplayNameFor(model => model.IsMeal)
+                </label>
+            </div>
+            
+            <div class="form-group" style="text-align:center">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div style="text-align:center">
+    <a asp-action="Index" class="btn btn-secondary">Back </a>
+</div>
+

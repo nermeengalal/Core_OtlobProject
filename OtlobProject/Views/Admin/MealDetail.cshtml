@@ -1,0 +1,52 @@
+﻿@model OtlobProject.Models.MealsInMenu
+
+@{
+    ViewData["Title"] = "MealDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>MealDetail</h1>
+
+<div>
+    <h4>MealsInMenu</h4>
+    <hr />
+    <dl class="row">
+       
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Logo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Logo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+       
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IsMeal)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsMeal)
+        </dd>
+        
+    </dl>
+</div>
+<div>
+  
+    <a asp-action="Index" class="btn btn-secondary">Back </a>
+</div>

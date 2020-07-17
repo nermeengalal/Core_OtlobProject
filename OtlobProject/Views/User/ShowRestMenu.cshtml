@@ -1,0 +1,31 @@
+﻿@model IEnumerable<OtlobProject.Models.Restaurant>
+
+@{
+    ViewData["Title"] = "ShowRestMenu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br /><br />
+<form class="search-form d-none d-md-block" asp-action="SearchByRestaurantName" style="margin-left:35%">
+    <div style="text-align:center">
+        <i class="icon-magnifier"></i>
+        <input type="search" class="form-control" placeholder="Search for Restaurant Here" title="Search here" name="searchString" style="width:30%">
+    </div>
+</form>
+
+<br /><br />
+@foreach (var item in Model)
+{
+    
+    <div class="card" style="width:200px ;margin:1%;display:inline-block">
+        <img class="card-img-top" src="~/images/@item.Logo" alt="Card image" style="width:100%;height:200px">
+        <div class="card-body">
+            <h4 style="text-align:center;font-size:30px ;color: #3d9970;font-family: cursive;">@item.Name</h4>
+        </div>
+        <div style="text-align:center">
+            <a href="/User/ShowMenu/@item.ID" class="btn btn-secondary btn-sm stretched-link" style="text-align:center">Menu</a>
+        </div>
+    </div>
+
+    
+}
+   

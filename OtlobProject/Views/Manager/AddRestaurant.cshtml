@@ -1,0 +1,85 @@
+﻿@model OtlobProject.ModelViews.RestaurantModelView
+
+@{
+    ViewData["Title"] = "AddRestaurant";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+    SelectList aa = new SelectList(ViewBag.StandID, "ID", "areas"); 
+    
+
+}
+
+<h1>AddRestaurant</h1>
+
+<h4>Restaurant</h4>
+<hr />
+<div class="row container">
+    <div class="col-md-6">
+        <img src="~/Otlob/rest2 logo.jpg" style="width:85%;height:85%;opacity:50%" />
+    </div>
+    <div class="col-md-6">
+        <form enctype="multipart/form-data" asp-action="AddRestaurant">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mobile" class="control-label"></label>
+                <input asp-for="Mobile" class="form-control" />
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HotLine" class="control-label"></label>
+                <input asp-for="HotLine" class="form-control" />
+                <span asp-validation-for="HotLine" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaxEstimatedDeliveryTime" class="control-label"></label>
+                <input asp-for="MaxEstimatedDeliveryTime" class="form-control" />
+                <span asp-validation-for="MaxEstimatedDeliveryTime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Logo" class="control-label"></label>
+                <input asp-for="Logo" type="file" />
+                <span asp-validation-for="Logo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkingFrom" class="control-label"></label>
+                <input asp-for="WorkingFrom" class="form-control" />
+                <span asp-validation-for="WorkingFrom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkingTo" class="control-label"></label>
+                <input asp-for="WorkingTo" class="form-control" />
+                <span asp-validation-for="WorkingTo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeliveryFee" class="control-label"></label>
+                <input asp-for="DeliveryFee" class="form-control" />
+                <span asp-validation-for="DeliveryFee" class="text-danger"></span>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                <label asp-for="AreaID" class="control-label"></label>
+                <select asp-for="AreaID"
+                        class="form-control"
+                        asp-items="@(new SelectList(@ViewBag.StandID, "ID", "areas"));"
+                        style="width:300px">
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div style="text-align:center">
+        <a asp-action="Index" class="btn btn-secondary">Back </a>
+    </div>
+</div>
+

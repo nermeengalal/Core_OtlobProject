@@ -1,0 +1,73 @@
+﻿@model OtlobProject.ModelViews.CardOrder
+
+@{
+    //ViewData["Title"] = ViewBag.rest;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h1 style="text-align:center;font-size:30px ;color: #3d9970;font-family: cursive;">Thanks For Ordering from</h1>
+    <h1 style="text-align:center;font-size:30px ;color: #3d9970;font-family: cursive;">@ViewBag.rest</h1>
+
+    <div style="opacity: 70%;width: 70%;margin-left: 20%;text-align: center;">
+        <h4 style="text-align:center;font-size:24px ;color: #3d9970;font-family: cursive;">Your Order</h4>
+        <hr />
+        <table class="table table-striped">
+                <tr>
+                    <th>OrderID : </th>
+                    <td>@Model.OrderId</td>
+
+                </tr>
+                <tr>
+                    <th>Customer Name :</th>
+                    <td>@Model.CusName</td>
+                </tr>
+                <tr>
+                    <th>Sub Total Price :</th>
+                    <td>@ViewBag.totalprice</td>
+                </tr>
+                <tr>
+                    <th>Delivery Fee :</th>
+                    <td>@ViewBag.Deliveryfee</td>
+                </tr>
+                <tr>
+                    <th>Total Price :</th>
+                    <td>@Model.Totalprice $</td>
+                </tr>
+             </table>
+            <table class="table">
+                <tr>
+                    <th>Order Summery</th>
+                </tr>
+                <tr>
+                    @if (Model.cards != null)
+                    {
+                        foreach (var i in Model.MealName)
+                        {
+                            <td class="col-sm-10">
+                                @Html.DisplayFor(model => i)
+                            </td>
+                        }
+                        foreach (var item in Model.cards)
+                        {
+
+                            <td class="col-sm-10">
+                                @Html.DisplayFor(model => item.Price)
+                                $
+                            </td>
+
+                            <td class="col-sm-10"><i class="fas fa-times"></i>
+                                @Html.DisplayFor(model => item.Quantity)
+                            </td>
+                        }
+
+                    }
+
+                </tr>
+        </table>
+        
+        <div style="text-align:center">
+            <a asp-action="Index" class="btn btn-secondary btn sm">Back</a>
+        </div>
+    </div>
+
+

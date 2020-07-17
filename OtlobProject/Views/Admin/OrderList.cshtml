@@ -1,0 +1,49 @@
+﻿@model IEnumerable<OtlobProject.ModelViews.Ordercst>
+
+@{
+    ViewData["Title"] = "OrderList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="text-align:center;font-size:30px ;color: #3d9970;font-family: cursive;">Orders List</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDone)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="@item.IsDone" /> @Html.DisplayNameFor(model => model.IsDone)
+                    </label>
+                </div>
+            </td>
+            <td>
+               
+                @Html.ActionLink("Details", "OrdersOfRest", new { id=item.ID },htmlAttributes: new { @class="btn btn-info"}) 
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

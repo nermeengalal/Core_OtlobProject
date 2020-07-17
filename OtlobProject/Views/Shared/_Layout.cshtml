@@ -1,0 +1,146 @@
+﻿@using System.Security.Claims;   
+@{
+    if (User.Identity.IsAuthenticated)
+    {
+        string user = User.FindFirst(ClaimTypes.Name).Value;
+        ViewBag.name = user;
+        string FirstLetter = user.Substring(0, 1).ToUpper();
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+
+    <link href="~/theme/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/theme/dist/css/adminlte.min.css">
+    <title>Otlob Samulation</title>
+    <link rel="stylesheet" href="~/theme/CSS/style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light  " style="background-color:#e7dfd5">
+
+        <a class="navbar-brand " href="/Home/Index">
+            <img src="~/theme/Imeg/otlob-seeklogo.com.svg" width="80" height="40" alt="logo">
+
+        </a>
+
+        <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                @if (User.IsInRole("User"))
+                {
+                    <a class="nav-item nav-link  " href="#">Offers <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link  " href="Manager/Registration">Become a Partner</a>
+                    <a class="nav-item nav-link  " href="#">Most Selling</a>
+                    <a class="nav-item nav-link  " href="#">All Rastaurants</a>
+                }
+
+                @if (User.IsInRole("User"))
+                {
+                    <a class="nav-item nav-link  " href="/User/CardDetails"><i class="fas fa-shopping-bag" style="font-size: 25px;color:#7c3c21"></i></a>
+                }
+
+                @if (User.IsInRole("Restaurant Admin"))
+                {
+                    <a class="nav-item nav-link  " href="/Admin/AddMeal"> <i class="fas fa-plus"></i> Meal </a>
+                    <a class="nav-item nav-link  " href="/Admin/Index"> Dashboard </a>
+                    <a class="nav-item nav-link  " href="/Admin/OrderList"> Orders </a>
+
+                }
+                @if (User.IsInRole("Manager"))
+                {
+                    <a class="nav-item nav-link  " href="/Manager/Index"> Dashboard </a>
+                    <a class="nav-item nav-link  " href="/Manager/AddRestaurant"> <i class="fas fa-plus"></i> Restaurant </a>
+                    <a class="nav-item nav-link  " href="/Manager/AddArea"> <i class="fas fa-plus"></i> Area </a>
+                    <a class="nav-item nav-link  " href="/Manager/NewRegistration"> <i class="fas fa-plus"></i> Registeration </a>
+                }
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <a class="nav-item nav-link  " asp-area="Identity" asp-page="/Account/Login">Login <i class="fas fa-sign-in-alt"></i></a>
+                }
+                else
+                {
+                    <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                        <div class="img-xs rounded-circle ml-2" style="background-color:#7c3c21;display: inline-block; width: 40%;">
+                            <span style="font-weight:bold;margin-left:30%;font-size:20px;color:white">@User.FindFirst(ClaimTypes.Name).Value.Substring(0, 1).ToUpper()</span>
+                        </div>
+                        <span class="font-weight-normal" style="color:white;font-size:20px"> @User.FindFirst(ClaimTypes.Name).Value</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown" style="right: 23%;left: auto;position:absolute;">
+                        <a class="dropdown-item"asp-area="Identity" asp-page="/Account/Logout" ><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </nav>
+    <!-- /.navbar -->
+    <!-- Main Sidebar Container -->
+
+
+
+    <div >
+        @RenderBody()
+    </div>
+
+    <br /><br /><br /><br /><br></br>
+    <footer class="page-footer font-small  darken-3" style="background-color:#e7dfd5">
+
+        <!-- Footer Elements -->
+        <div class="container">
+
+            <!-- Grid row-->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-md-12 py-3">
+                    <div class="mb-8 text-center py-3">
+
+                        <!-- Facebook -->
+                        <a class="fb-ic" href="https://www.facebook.com/Otlob" style="color:white">
+                            <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                        <!-- Twitter -->
+                        <a class="tw-ic" href="https://twitter.com/Otlob" style="color:white">
+                            <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                        <a class="ins-ic" href="https://www.instagram.com/otlobegypt/" style="color: white">
+                            <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</footer>
+
+
+
+   
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+
+
+    <!-- jQuery -->
+    <script src="~/theme/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/theme/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/theme/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/theme/dist/js/demo.js"></script>
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>
